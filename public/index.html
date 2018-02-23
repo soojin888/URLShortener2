@@ -1,0 +1,97 @@
+<html>
+  <head>
+    <title>URL Shortener</title>
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+  </head>
+  <body>
+    <br><br>
+
+    <form id="createUrl" role="form">
+      <input type="url" id="longUrl">
+      <button id="start_ajax" type="submit">Shorten !</button>
+    </form>
+
+  <table id="tableID" class="tableClass">
+      <thead>
+          <tr class="ui-widget-header ">
+              <th>#</th>
+              <th>Orgin URL</th>
+              <th>Short URL</th>
+              <th>All clicks</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td class="nr"><span>50</span>
+              </td>
+              <td>Some Street 1</td>
+              <td>Leeds</td>
+              <td>L0 0XX</td>
+              <td>United Kingdom</td>
+              <td>
+                  <button type="button" class="use-address" />
+              </td>
+          </tr>
+          <tr>
+              <td class="nr">49</td>
+              <td>Some Street 2</td>
+              <td>Lancaster</td>
+              <td>L0 0XX</td>
+              <td>United Kingdom</td>
+              <td>
+                  <button type="button" class="use-address" />
+              </td>
+          </tr>
+      </tbody>
+  </table>
+
+  <!-- $("#start_ajax").click(function(){
+    $.ajax({
+        type:"POST",
+        url:"./book.jsp",
+        data : {name : "홍길동"},
+        dataType : "xml",
+        success: function(xml){
+            console.log(xml);
+        },
+        error: function(xhr, status, error) {
+            alert(error);
+        }
+    });
+}); -->
+
+    <br><br>
+
+
+
+    <h2><strong id="shortUrl"></strong></h2>
+
+    <script type="text/javascript">
+      var API_SERVER = 'http://localhost:3000';
+
+      $( "#createUrl" ).submit(function( event ) {
+
+        event.preventDefault();
+
+        var longUrl = $('#longUrl').val();
+
+        $.ajax({
+          url: API_SERVER + '/url/' + encodeURIComponent(longUrl)
+          , crossDomain: true
+          , dataType: "json"
+          , type: 'GET'
+          , data: {}
+          , success: success
+          , error: function(jqXHR, textStatus, errorThrown){
+              alert(errorThrown);
+          }
+        });
+
+      });
+
+      var success = function(data){
+        $('#shortUrl').text(API_SERVER +'/' +data.key);
+      };
+    </script>
+  </body>
+ </html>
