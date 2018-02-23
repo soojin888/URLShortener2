@@ -8,7 +8,7 @@
 
     <form id="createUrl" role="form">
       <input type="url" id="longUrl">
-      <button id="start_ajax" type="submit">Shorten !</button>
+      <button type="submit">Shorten !</button>
     </form>
 
   <table id="tableID" class="tableClass">
@@ -45,23 +45,24 @@
       </tbody>
   </table>
 
-  <!-- $("#start_ajax").click(function(){
-    $.ajax({
-        type:"POST",
-        url:"./book.jsp",
-        data : {name : "홍길동"},
-        dataType : "xml",
-        success: function(xml){
-            console.log(xml);
-        },
-        error: function(xhr, status, error) {
-            alert(error);
-        }
-    });
-}); -->
+  <script type="text/javascript">
+    $("#start_ajax").click(function(){
+      $.ajax({
+          type:"POST",
+          url:"./book.jsp",
+          data : {name : "홍길동"},
+          dataType : "xml",
+          success: function(xml){
+              console.log(xml);
+          },
+          error: function(xhr, status, error) {
+              alert(error);
+          }
+      });
+  });
+  </script>
 
     <br><br>
-
 
 
     <h2><strong id="shortUrl"></strong></h2>
