@@ -47,18 +47,21 @@
 
   <script type="text/javascript">
       $.ajax({
-          type:"POST",
           url:'/api/history'
-          data : {name : "홍길동"},
-          dataType : "json",
-          success: function(xml){
-              console.log(xml);
+          , type:"POST",
+          // data : {name : "홍길동"},
+          , dataType : "json",
+          , success: function(data){
+              console.log(data);
 
-              for(){
-
+              for(var i=0; i<data.length; i++){
+                $('#table').append('<tr>');
+                $('#table').append('<th>'+data[i].url+'</th>');
+                $('#table').append('<th>'+data[i].cnt+'</th>');
+                $('#table').append('</tr>');
               }
-          },
-          error: function(jqXHR, textStatus, errorThrown){
+            }
+          , error: function(jqXHR, textStatus, errorThrown){
              alert(errorThrown);
          }
       });
@@ -66,7 +69,6 @@
   </script>
 
     <br><br>
-
 
     <h2><strong id="shortUrl"></strong></h2>
 
