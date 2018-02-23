@@ -46,36 +46,13 @@ app.get('/:key', function(req, res){
 
 app.get('/api/:history', function(req, res){
   var self = this;
-  sequences.findOneAndUpdate({_count: 'url_count'}, {$inc: {seq: 1} }, function(error, result) {
+
     console.log(result);
     if (error) return next(error);
-    self.created_at = new Date();
-    self._count = result.seq;
-    next();
+
   });
 });
 
-app.get('/url/:longUrl', function(req, res){
-  var self = this;
-  sequences.findOneAndUpdate({_count: 'url_count'}, {$inc: {seq: 1} }, function(error, result) {
-    console.log(result);
-    if (error) return next(error);
-    self.created_at = new Date();
-    self._count = result.seq;
-    next();
-  });
-});
-
-app.get('/api/:shortUrl', function(req, res){
-  var self = this;
-  sequences.findOneAndUpdate({_count: 'url_count'}, {$inc: {seq: 1} }, function(error, result) {
-    console.log(result);
-    if (error) return next(error);
-    self.created_at = new Date();
-    self._count = result.seq;
-    next();
-  });
-});
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!')
