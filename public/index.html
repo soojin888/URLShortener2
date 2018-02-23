@@ -46,18 +46,21 @@
   </table>
 
   <script type="text/javascript">
-    $("#start_ajax").click(function(){
       $.ajax({
           type:"POST",
-          url:"./book.jsp",
+          url:'/api/history'
           data : {name : "홍길동"},
-          dataType : "xml",
+          dataType : "json",
           success: function(xml){
               console.log(xml);
+
+              for(){
+
+              }
           },
-          error: function(xhr, status, error) {
-              alert(error);
-          }
+          error: function(jqXHR, textStatus, errorThrown){
+             alert(errorThrown);
+         }
       });
   });
   </script>
