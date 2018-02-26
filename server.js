@@ -44,13 +44,22 @@ app.get('/:key', function(req, res){
   });
 });
 
+
+  // UrlsSchema.pre('save', function(next){
+  //   var self = this;
+  //   sequences.findOneAndUpdate({_id: 'url_count', {$inc: {seq: 1} }, {upsert: true}, function(error, result) {
+  //     console.log(result);
+  //     if (error) return next(error);
+  //     self.created_at = new Date();
+  //     self._id = result.seq;
+  //     next();
+  //   });
+
 app.get('/api/:history', function(req, res){
   var self = this;
 
     console.log(result);
     if (error) return next(error);
-
-  });
 });
 
 

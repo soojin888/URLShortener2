@@ -48,17 +48,13 @@
   <script type="text/javascript">
       $.ajax({
           url:'/api/history'
-          , type:"POST",
+          , type:"POST"
           // data : {name : "홍길동"},
-          , dataType : "json",
+          , dataType : "json"
           , success: function(data){
               console.log(data);
 
-              for(var i=0; i<data.length; i++){
-                $('#table').append('<tr>');
-                $('#table').append('<th>'+data[i].url+'</th>');
-                $('#table').append('<th>'+data[i].cnt+'</th>');
-                $('#table').append('</tr>');
+              for(var i = 0; i < data.length; i++){
               }
             }
           , error: function(jqXHR, textStatus, errorThrown){
@@ -97,6 +93,7 @@
 
       var success = function(data){
         $('#shortUrl').text(API_SERVER +'/' +data.key);
+
       };
     </script>
   </body>
